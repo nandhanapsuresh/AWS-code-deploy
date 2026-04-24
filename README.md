@@ -218,6 +218,13 @@ aws ec2 associate-iam-instance-profile \
    - Service role: `codedeploy-service-role-nandhana` ← must be Role 2, NOT Role 1
    - EC2 Tag: `Key=Name, Value=apache-server`
 
+
+### CodeDeploy Application
+![Deployment App](screenshots/deployment-app.png)
+
+### Deployment Group Configuration
+![Deployment Group](screenshots/deployment_group.png)
+
 ---
 
 ## Step 6: Create CodeBuild Project
@@ -228,6 +235,9 @@ aws ec2 associate-iam-instance-profile \
    - Environment: Managed image, Ubuntu
    - Buildspec: Use `buildspec.yml` from source
 
+
+### CodeBuild — Successful Build
+![CodeBuild](screenshots/build.png)
 ---
 
 ## Step 7: Create CodePipeline
@@ -237,6 +247,9 @@ aws ec2 associate-iam-instance-profile \
 2. Source: GitHub → select this repo, branch `main`
 3. Build: CodeBuild → `nandhana-demo-build`
 4. Deploy: CodeDeploy → `nandhana-code-deploy-app` → `nandhana-code-deploy-group`
+
+### CodePipeline — All Stages
+![Pipeline](screenshots/pipeline.png)
 
 ---
 
@@ -252,6 +265,9 @@ curl http://localhost
 ```
 
 Open in browser: `http://<ec2-public-ip>`
+
+### Pipeline Execution Summary
+![Execution Summary](screenshots/execution_summary.png)
 
 ---
 
